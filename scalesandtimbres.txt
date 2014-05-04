@@ -1,0 +1,26 @@
+OSC
+
+/fader 10 hi 1.6
+
+Tesserect, Python
+
+
+Faux Slendro (5)
+Ptolemy 11 lmt (7) 1/1, 7/6, 21/16, 11/8, 3/2, 7/4, 11/6, 2/1
+JIT Piano (12)
+Rich Octave (16)
+Doty OMJ14 (14)
+
+
+
+
+Bars
+Sine Tones
+Faux Piano
+Raw Saw
+Lopass Saw
+
+
+1/1, 7/6, 21/16, 11/8, 3/2, 7/4, 11/6, 2/1
+
+1/1, 
