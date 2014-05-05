@@ -4,7 +4,7 @@ import os
 import pygame.midi
 import pygame.mixer
 
-pygame.mixer.pre_init(44100, -8, 1, 512)
+pygame.mixer.pre_init(22050, -16, 2, 512)
 pygame.init()
 pygame.midi.init()
 clock = pygame.time.Clock()
@@ -52,9 +52,12 @@ while goin:
             midiNumber = pressData[1]
             velocity = pressData[2]
             if pressDirection==144:
+                tones[midiNumber].set_volume(velocity/127.)
                 tones[midiNumber].play()
+                tones[midiNumber].fadeout(5000)
             elif pressDirection==128:
                 tones[midiNumber].stop()
+                #tones[midiNumber].fadeout(100)
 
     pygame.display.flip()
     clock.tick(60)
