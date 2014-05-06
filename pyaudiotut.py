@@ -13,7 +13,7 @@ pygame.midi.init()
 clock = pygame.time.Clock()
 
 screen = pygame.display.set_mode((1000,500),pygame.RESIZABLE)
-pygame.display.set_caption("Chadtech v4.00 : CtPiano",)
+pygame.display.set_caption("Chadtech v4.00 : pyaudio practice",)
 
 welcomescreen = pygame.image.load('welcomescreen.PNG').convert()
 
@@ -25,15 +25,8 @@ def sine_wave(frequency=440.0, framerate=44100, amplitude=0.5):
     if amplitude > 1.0: amplitude = 1.0
     if amplitude < 0.0: amplitude = 0.0
     lookup_table = [float(amplitude) * math.sin(2.0*math.pi*float(frequency)*(float(i%period)/float(framerate))) for i in xrange(period)]
-    return (lookup_table[i%period] for i in range(period))
+    return (lookup_table[i%period] for i in xrange(period))
 
-ONon = sine_wave(400)
-
-tones=[]
-os.chdir(os.path.abspath('JIT Europe Sines'))
-for yit in os.listdir(os.getcwd()):
-	if  yit.endswith('.wav'):
-		tones.append(pygame.mixer.Sound(yit))
 toneFire = False
 countDown = False
 phasePosition = 0
@@ -58,10 +51,9 @@ while goin:
 
 	if toneFire==True:
 		if countDown==False:
-			stream.write(array.array('f',(yit for yit in ONon)).tostring())
+			stream.write(array.array('f',sine_wave(400)).tostring())
 		else:
 			stream.write(array.array('f',sine_wave(400, amplitude=volume/200.)).tostring())
-			print volume
 			volume-=3
 			if volume<0:
 				toneFire=False
