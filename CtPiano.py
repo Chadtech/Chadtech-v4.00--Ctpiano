@@ -23,10 +23,10 @@ stream = p.open(rate=44100, channels=1, format=pyaudio.paFloat32, output=True)
 for yit in range(pygame.midi.get_count() ):
 	print pygame.midi.get_device_info(yit), yit
 
-inp = pygame.midi.Input(0)
+inp = pygame.midi.Input(1)
 
 tones=[]
-os.chdir(os.path.abspath('JIT Europe Sines'))
+os.chdir(os.path.abspath('Faux Slendro Bars'))
 for yit in os.listdir(os.getcwd()):
 	if  yit.endswith('.wav'):
 		tones.append(pygame.mixer.Sound(yit))
@@ -59,9 +59,9 @@ while goin:
 			midiNumber = pressData[1]
 			velocity = pressData[2]
 			if pressDirection==144:
-				tones[midiNumber].set_volume(velocity/127.)
+				tones[midiNumber].set_volume((velocity/127.)**(3))
 				tones[midiNumber].play()
-				tones[midiNumber].fadeout(int(5000*(velocity/127.)))
+				tones[midiNumber].fadeout(int(5000*((velocity/127.))))
 			elif pressDirection==128:
 				tones[midiNumber].stop()
 				tones[midiNumber].fadeout(30)
