@@ -168,10 +168,10 @@ for yit in range(0,127):
 
 	print 'TONE:', tones[yit%len(tones)], ', MIDI NUMBER: ', yit
 
-	combineWavs(0,makeTriangleEnharmonicMitDecay(frequency,2,60),thisTone,300.)
-	combineWavs(0,makeTriangleEnharmonicMitDecayOn(frequency*4,2,60),thisTone,50.)
-	combineWavs(0,makeTriangleEnharmonicMitDecayOn(frequency*8,2,30),thisTone,50.)		
-	combineWavs(0,makeTriangleEnharmonicMitDecayOn(frequency*3,2,30),thisTone,150.)
+	combineWavs(0,makeTriangleEnharmonicMitDecay(frequency,2,60),thisTone,150.*((float(yit)/2.))/28.)
+	combineWavs(0,makeTriangleEnharmonicMitDecayOn(frequency*4,2,60),thisTone,25.*((float(yit)/2.))/28.)
+	combineWavs(0,makeTriangleEnharmonicMitDecayOn(frequency*8,2,30),thisTone,25.*((float(yit)/2.))/28.)		
+	combineWavs(0,makeTriangleEnharmonicMitDecayOn(frequency*3,2,30),thisTone,75.*((float(yit)/2.))/28.)
 
 	combineWavs(0,makeTone(frequency,2,1),thisTone,600.)
 	

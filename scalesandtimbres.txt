@@ -5,22 +5,30 @@ OSC
 Tesserect, Python
 
 
-Faux Slendro (5)
+Faux Slendro (5) 1/1, 7/6, 4/3, 32/21, 7/4, 2/1
 Ptolemy 11 lmt (7) 1/1, 7/6, 21/16, 11/8, 3/2, 7/4, 11/6, 2/1
-JIT Piano (12)
-Rich Octave (16)
-Doty OMJ14 (14)
+JIT Europe (12)
+Rich Octave (16) 1/1, 21/20, 10/9, 7/6, 6/5, 5/4, 9/7, 21/16, 10/7, 40/27, 14/9, 8/5, 5/3, 12/7, 9/5, 40/21 
+Doty OMJ14 (14), 1/1, 15/14, 9/8, 7/6, 5/4, 9/7, 4/3, 7/5, 3/2, 14/9, 5/3, 7/4, 15/8, 27/14
 
 
 
 
 Bars
-Sine Tones
-Faux Piano
-Raw Saw
-Lopass Saw
+Miscpercus
+Triangledrop
+Losaw
+Hisaw
+Losquare
+Decaysquare
+Emphaenharm
+
 
 
 1/1, 7/6, 21/16, 11/8, 3/2, 7/4, 11/6, 2/1
 
 1/1, 
+
+
+
+drummy sound:= changespeed(Bars - sine(fundamental),-75)
