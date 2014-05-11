@@ -187,6 +187,9 @@ while selecting2 and not quit:
 			if event.key == pygame.K_RETURN:
 				if type(timbreChoice)==int:
 					selecting2=False
+					screen.fill((0,0,0))
+					screen.blit(sidebar,[0,0])
+					screen.blit(pygame.font.Font('Command-Prompt-12x16.ttf',16).render('Loading',False,(192,192,192)),[180,32])
 
 	if event.type==pygame.MOUSEBUTTONDOWN:
 			mouX,mouY = event.pos
@@ -198,6 +201,9 @@ while selecting2 and not quit:
 			if mouY>((len(timbreOptions)*24)+54) and mouY<((len(timbreOptions)*24)+78) and mouX>180 and mouX<236:
 				if type(timbreChoice)==int:
 					selecting2 = False
+					screen.fill((0,0,0))
+					screen.blit(sidebar,[0,0])
+					screen.blit(pygame.font.Font('Command-Prompt-12x16.ttf',16).render('Loading',False,(192,192,192)),[180,32])
 
 	if event.type == pygame.QUIT:
 		selecting2 = False
