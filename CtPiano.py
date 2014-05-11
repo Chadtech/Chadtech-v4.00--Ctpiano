@@ -207,13 +207,16 @@ while selecting2 and not quit:
 	clock.tick(44100)
 
 screen.fill((0,0,0))
+screen.blit(pygame.font.Font('Command-Prompt-12x16.ttf',16).render('Loading',False,(192,192,192)),[180,32])
 
 tones=[]
-os.chdir(os.path.abspath('Faux Slendro Bars'))
+os.chdir(os.path.abspath(scaleOptions[scaleChoice]+' '+timbreOptions[timbreChoice]))
 for yit in os.listdir(os.getcwd()):
 	if  yit.endswith('.wav'):
 		tones.append(pygame.mixer.Sound(yit))
 os.chdir(os.path.dirname(os.getcwd()))
+
+screen.fill((0,0,0))
 
 while mainLoop and not quit:
 
