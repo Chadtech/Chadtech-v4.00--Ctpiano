@@ -27,11 +27,11 @@ scaleChoice = 'None'
 timbreChoice = 'None'
 
 timbreOptions = ['Bars','Miscpercus','Triangledrop','Lowsaw','Hisaw','Losquare','DKsquare','Emphaenharm']
-scaleOptions = ['Fauxslendro','Ptolemy 11 lmt', 'JIT Europe', 'Doty OMJ14', 'Richoctave']
+scaleOptions = ['Fauxslendro','Ptolemy 11lmt', 'JIT Europe', 'Doty OMJ14', 'Richoctave']
 
 scaleTones = {
 	'Fauxslendro':['1/1','7/6','4/3','32/21','7/4','2/1'],
-	'Ptolemy 11 lmt':['1/1','7/6','21/16','11/8','3/2','7/4','11/6','2/1'],
+	'Ptolemy 11lmt':['1/1','7/6','21/16','11/8','3/2','7/4','11/6','2/1'],
 	'JIT Europe':['1/1','16/15','9/8','6/5','5/4','4/3','45/32','3/2','5/3','8/5','16/9','15/8','2/1'],
 	'Doty OMJ14':['1/1','15/14','9/8','7/6','5/4','9/7','4/3','7/5','3/2','14/9','5/3','7/4','15/8','27/14','2/1'],
 	'Richoctave':['1/1','21/20','10/9','7/6','6/5','5/4','9/7','21/16','10/7','40/27','14/9','8/5','5/3','12/7','9/5','40/21','2/1']
@@ -40,7 +40,7 @@ scaleTones = {
 
 alternateNotation = {
 	'Fauxslendro':['1','2','3','5','6'],
-	'Ptolemy 11 lmt':['None','None','None','None','None','None','None'],
+	'Ptolemy 11lmt':['None','None','None','None','None','None','None'],
 	'JIT Europe':['C','C#','D','D#','E','F','F#','G','G#','A','A#','B'],
 	'Doty OMJ14':['None','None','None','None','None','None','None','None','None','None','None','None','None','None'],
 	'Richoctave':['0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F']
@@ -201,7 +201,7 @@ while selecting2 and not quit:
 					timbreChoice = 0
 				elif type(timbreChoice) == int:
 					if timbreChoice<len(timbreOptions)-1:
-						scaleChoice+=1
+						timbreChoice+=1
 			if event.key == pygame.K_UP:
 				if type(timbreChoice) == str:
 					timbreChoice = 0
@@ -215,7 +215,7 @@ while selecting2 and not quit:
 					screen.blit(sidebar,[0,0])
 					screen.blit(pygame.font.Font('Command-Prompt-12x16.ttf',16).render('Loading',False,(192,192,192)),[180,32])
 
-	if event.type==pygame.MOUSEBUTTONDOWN:
+	if event.type==pygame.MOUSEBUTTONUP:
 			mouX,mouY = event.pos
 			choiY = (mouY-50)/24
 			if mouX>=180 and mouX<953:
