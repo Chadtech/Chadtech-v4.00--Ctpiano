@@ -37,6 +37,30 @@ scaleTones = {
 	'Richoctave':['1/1','21/20','10/9','7/6','6/5','5/4','9/7','21/16','10/7','40/27','14/9','8/5','5/3','12/7','9/5','40/21','2/1']
 }
 
+
+alternateNotation = {
+	'Fauxslendro':['1','2','3','5','6'],
+	'Ptolemy 11 lmt':['None','None','None','None','None','None','None'],
+	'JIT Europe':['C','C#','D','D#','E','F','F#','G','G#','A','A#','B'],
+	'Doty OMJ14':['None','None','None','None','None','None','None','None','None','None','None','None','None','None'],
+	'Richoctave':['0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F']
+}
+
+JITEuropeNotation = {
+	'1/1','C'
+	'16/15','C#'
+	'9/8','D'
+	'6/5','D#'
+	'5/4','E'
+	'4/3','F'
+	'45/32','F#'
+	'3/2','G'
+	'5/3','G#'
+	'8/5','A'
+	'16/9','A#'
+	'15/8','B'
+}
+
 #inp = pygame.midi.Input(1)
 
 
@@ -224,6 +248,8 @@ os.chdir(os.path.dirname(os.getcwd()))
 
 screen.fill((0,0,0))
 
+printInfo = [['Tone Fraction      : ','NA'],['Alternate Notation : ','NA'],['Midi Number        : ', 'NA'],['Velocity           : ','NA']]
+
 while mainLoop and not quit:
 
 	screen.blit(sidebar,[0,0])
@@ -239,24 +265,34 @@ while mainLoop and not quit:
 ###### 0 is the bottom midi note (C), 120 is the top (if)
 
 ###### Gonna make three scales
+	for infoType in range(len(printInfo)):
+		screen.blit(pygame.font.Font('Command-Prompt-12x16.ttf',32).render(printInfo[infoType][0]+printInfo[infoType][1],False,(192,192,192)),[180,32 + (36*infoType)])
 
 	if inp.poll():
 		keys = inp.read(1000)
 		for keyPressed in keys:
 			pressData = keyPressed[0]
-			print pressData
+			#print pressData
 			pressDirection = pressData[0]
 			midiNumber = pressData[1]
 			velocity = pressData[2]
 			if pressDirection==144:
+				printInfo[0][1] = scaleTones[scaleOptions[scaleChoice]][midiNumber%(len(scaleTones[scaleOptions[scaleChoice]])-1)]
+				printInfo[1][1] = alternateNotation[scaleOptions[scaleChoice]][midiNumber%(len(scaleTones[scaleOptions[scaleChoice]])-1)]
+				printInfo[2][1] = str(midiNumber)
+				printInfo[3][1] = str(velocity).zfill(3)
 				tones[midiNumber].set_volume((velocity/127.)**(3))
 				tones[midiNumber].play()
 				#tones[midiNumber].fadeout(int(5000*((velocity/127.))))
 			elif pressDirection==128:
 				#tones[midiNumber].stop()
 				tones[midiNumber].fadeout(30)
+	
+
 
 	pygame.display.flip()
 	clock.tick(44100)
+
+	screen.fill((0,0,0))
 
 pygame.quit()
