@@ -137,8 +137,6 @@ while selecting0 and not quit:
 inp = pygame.midi.Input(deviceChoice)
 screen.fill((0,0,0))
 
-sleep(0.1)
-
 #### Select scale options
 while selecting1 and not quit:
 	screen.fill((0,0,0))	
@@ -192,8 +190,6 @@ while selecting1 and not quit:
 
 	pygame.display.flip()
 	clock.tick(44100)
-
-sleep(0.1)
 
 #### Select timbre options
 while selecting2 and not quit:
