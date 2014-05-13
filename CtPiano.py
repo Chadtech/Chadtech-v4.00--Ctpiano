@@ -115,13 +115,21 @@ while selecting0 and not quit:
 				if type(deviceChoice)==int:
 					selecting0=False
 
-		if event.type==pygame.MOUSEBUTTONUP:
+		if event.type==pygame.MOUSEBUTTONDOWN:
 			mouX,mouY = event.pos
 			choiY = (mouY-50)/24
 			if mouX>=180 and mouX<953:
 				if choiY<pygame.midi.get_count() and choiY>=0:
 					deviceChoice=choiY
-					selecting0 = False
+
+		if event.type==pygame.MOUSEBUTTONUP:
+			mouX,mouY = event.pos
+			choiY = (mouY-50)/24
+			if mouX>=180 and mouX<953:
+				if choiY<pygame.midi.get_count() and choiY>=0:
+					if type(deviceChoice)==int:
+						selecting0=False
+
 
 			if mouY>((pygame.midi.get_count()*24)+54) and mouY<((pygame.midi.get_count()*24)+78) and mouX>180 and mouX<236:
 				if type(deviceChoice)==int:
@@ -172,13 +180,20 @@ while selecting1 and not quit:
 				if type(scaleChoice)==int:
 					selecting1=False
 
-	if event.type==pygame.MOUSEBUTTONUP:
+	if event.type==pygame.MOUSEBUTTONDOWN:
 			mouX,mouY = event.pos
 			choiY = (mouY-50)/24
 			if mouX>=180 and mouX<953:
 				if choiY<len(scaleOptions) and choiY>=0:
 					scaleChoice=choiY
-					selecting1=False
+
+	if event.type==pygame.MOUSEBUTTONUP:
+			mouX,mouY = event.pos
+			choiY = (mouY-50)/24
+			if mouX>=180 and mouX<953:
+				if choiY<len(scaleOptions) and choiY>=0:
+					if type(scaleChoice)==int:
+						selecting1=False
 
 			if mouY>((len(scaleOptions)*24)+54) and mouY<((len(scaleOptions)*24)+78) and mouX>180 and mouX<236:
 				if type(scaleChoice)==int:
@@ -229,13 +244,20 @@ while selecting2 and not quit:
 					screen.blit(sidebar,[0,0])
 					screen.blit(pygame.font.Font('Command-Prompt-12x16.ttf',16).render('Loading',False,(192,192,192)),[180,32])
 
-	if event.type==pygame.MOUSEBUTTONUP:
+	if event.type==pygame.MOUSEBUTTONDOWN:
 			mouX,mouY = event.pos
 			choiY = (mouY-50)/24
 			if mouX>=180 and mouX<953:
 				if choiY<len(timbreOptions) and choiY>=0:
 					timbreChoice=choiY
-					selecting2=False
+
+	if event.type==pygame.MOUSEBUTTONUP:
+			mouX,mouY = event.pos
+			choiY = (mouY-50)/24
+			if mouX>=180 and mouX<953:
+				if choiY<len(timbreOptions) and choiY>=0:
+					if type(timbreChoice)==int:
+						selecting2 = False
 
 			if mouY>((len(timbreOptions)*24)+54) and mouY<((len(timbreOptions)*24)+78) and mouX>180 and mouX<236:
 				if type(timbreChoice)==int:
