@@ -6,6 +6,8 @@ import pygame.mixer
 import pyaudio
 import array
 import math
+import time
+from time import sleep
 
 pygame.mixer.pre_init(44100, -16, 2, 512)
 pygame.init()
@@ -21,17 +23,27 @@ selectedOption = pygame.image.load('selectedoption.png').convert()
 okay = pygame.image.load('okay.png').convert()
 #okaySelected = pygame.image.load('okaySelected.png').convert()
 
+tones = [
+1.0, # 1/1
+1.16667, # 7/6
+1.3125, # 21/16
+1.375, # 11/8
+1.5, # 3/2
+1.75, # 7/4
+1.83333, # 11/6
+]
+
 
 deviceChoice = 'None'
 scaleChoice = 'None'
 timbreChoice = 'None'
 
-timbreOptions = ['Bars','Miscpercus','Triangledrop','Lowsaw','Hisaw','Losquare','DKsquare','Emphaenharm']
+timbreOptions = ['Bars','Miscpercus','Triangledrop','Losaw','Hisaw','Losquare','DKsquare','Emphaenharm']
 scaleOptions = ['Fauxslendro','Ptolemy 11lmt', 'JIT Europe', 'Doty OMJ14', 'Richoctave']
 
 scaleTones = {
 	'Fauxslendro':['1/1','7/6','4/3','32/21','7/4','2/1'],
-	'Ptolemy 11lmt':['1/1','7/6','21/16','11/8','3/2','7/4','11/6','2/1'],
+	'Ptolemy 11lmt':['1/1','7/6','21/16','11/8','3/2','7/4','11/6'],
 	'JIT Europe':['1/1','16/15','9/8','6/5','5/4','4/3','45/32','3/2','5/3','8/5','16/9','15/8','2/1'],
 	'Doty OMJ14':['1/1','15/14','9/8','7/6','5/4','9/7','4/3','7/5','3/2','14/9','5/3','7/4','15/8','27/14','2/1'],
 	'Richoctave':['1/1','21/20','10/9','7/6','6/5','5/4','9/7','21/16','10/7','40/27','14/9','8/5','5/3','12/7','9/5','40/21','2/1']
@@ -109,6 +121,7 @@ while selecting0 and not quit:
 			if mouX>=180 and mouX<953:
 				if choiY<pygame.midi.get_count() and choiY>=0:
 					deviceChoice=choiY
+					selecting0 = False
 
 			if mouY>((pygame.midi.get_count()*24)+54) and mouY<((pygame.midi.get_count()*24)+78) and mouX>180 and mouX<236:
 				if type(deviceChoice)==int:
@@ -123,6 +136,8 @@ while selecting0 and not quit:
 
 inp = pygame.midi.Input(deviceChoice)
 screen.fill((0,0,0))
+
+sleep(0.1)
 
 #### Select scale options
 while selecting1 and not quit:
@@ -159,12 +174,13 @@ while selecting1 and not quit:
 				if type(scaleChoice)==int:
 					selecting1=False
 
-	if event.type==pygame.MOUSEBUTTONDOWN:
+	if event.type==pygame.MOUSEBUTTONUP:
 			mouX,mouY = event.pos
 			choiY = (mouY-50)/24
 			if mouX>=180 and mouX<953:
 				if choiY<len(scaleOptions) and choiY>=0:
 					scaleChoice=choiY
+					selecting1=False
 
 			if mouY>((len(scaleOptions)*24)+54) and mouY<((len(scaleOptions)*24)+78) and mouX>180 and mouX<236:
 				if type(scaleChoice)==int:
@@ -176,6 +192,8 @@ while selecting1 and not quit:
 
 	pygame.display.flip()
 	clock.tick(44100)
+
+sleep(0.1)
 
 #### Select timbre options
 while selecting2 and not quit:
@@ -221,6 +239,7 @@ while selecting2 and not quit:
 			if mouX>=180 and mouX<953:
 				if choiY<len(timbreOptions) and choiY>=0:
 					timbreChoice=choiY
+					selecting2=False
 
 			if mouY>((len(timbreOptions)*24)+54) and mouY<((len(timbreOptions)*24)+78) and mouX>180 and mouX<236:
 				if type(timbreChoice)==int:
@@ -228,6 +247,7 @@ while selecting2 and not quit:
 					screen.fill((0,0,0))
 					screen.blit(sidebar,[0,0])
 					screen.blit(pygame.font.Font('Command-Prompt-12x16.ttf',16).render('Loading',False,(192,192,192)),[180,32])
+
 
 	if event.type == pygame.QUIT:
 		selecting2 = False
