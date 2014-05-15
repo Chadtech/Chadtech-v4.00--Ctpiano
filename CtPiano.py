@@ -3,11 +3,7 @@ import pygame
 import os
 import pygame.midi
 import pygame.mixer
-import pyaudio
-import array
 import math
-import time
-from time import sleep
 
 pygame.mixer.pre_init(44100, -16, 2, 512)
 pygame.init()
