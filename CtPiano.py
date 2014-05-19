@@ -19,16 +19,6 @@ selectedOption = pygame.image.load('selectedoption.png').convert()
 okay = pygame.image.load('okay.png').convert()
 #okaySelected = pygame.image.load('okaySelected.png').convert()
 
-tones = [
-1.0, # 1/1
-1.16667, # 7/6
-1.3125, # 21/16
-1.375, # 11/8
-1.5, # 3/2
-1.75, # 7/4
-1.83333, # 11/6
-]
-
 
 deviceChoice = 'None'
 scaleChoice = 'None'
